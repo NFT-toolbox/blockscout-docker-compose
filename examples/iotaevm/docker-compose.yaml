@@ -1,0 +1,24 @@
+services:
+    db:
+        image: postgres:12.4
+        environment:
+            POSTGRES_PASSWORD: enviu_dev
+            POSTGRES_USER: postgres
+        network_mode: host
+    blockscout:
+        image: surfingnerd/blockscout:v0.8-372
+        depends_on:
+            - "db"
+        ports:
+            - "4001:4001"
+        tty: true
+        network_mode: host
+        environment:
+            ETHEREUM_JSONRPC_HTTP_URL: http://127.0.0.1:8545
+            ETHEREUM_JSONRPC_TRACE_URL: http://127.0.0.1:8545
+            ETHEREUM_JSONRPC_VARIANT: geth
+            NETWORK: IOTA
+            CHAIN_ID: 1074
+            HOST: 127.17.0.1
+            PORT: 4001
+            DATABASE_URL: postgresql://postgres:@127.17.0.1:5432/explorer?ssl=false
