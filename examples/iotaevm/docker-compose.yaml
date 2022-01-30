@@ -18,7 +18,7 @@ services:
             ETHEREUM_JSONRPC_TRACE_URL: http://127.0.0.1:8545
             ETHEREUM_JSONRPC_VARIANT: geth
             NETWORK: IOTA
-            CHAIN_ID: 1074
+            CHAIN_ID: 1076
             HOST: 127.17.0.1
             PORT: 4001
             DATABASE_URL: postgresql://postgres:@127.17.0.1:5432/explorer?ssl=false
