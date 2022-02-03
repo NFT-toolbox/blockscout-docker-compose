@@ -5,6 +5,11 @@ services:
             POSTGRES_PASSWORD: enviu_dev
             POSTGRES_USER: postgres
         network_mode: host
+        logging:
+          driver: "json-file"
+          options:
+            max-file: "5"   # number of files or file count
+            max-size: "10m" # file size
     blockscout:
         image: surfingnerd/blockscout:v0.8-372
         depends_on:
@@ -18,7 +23,14 @@ services:
             ETHEREUM_JSONRPC_TRACE_URL: http://127.0.0.1:8545
             ETHEREUM_JSONRPC_VARIANT: geth
             NETWORK: IOTA
+            SUBNETWORK: IOTA
+            COIN: MIOTA
             CHAIN_ID: 1076
             HOST: 127.17.0.1
             PORT: 4001
             DATABASE_URL: postgresql://postgres:@127.17.0.1:5432/explorer?ssl=false
+        logging:
+          driver: "json-file"
+          options:
+            max-file: "5"   # number of files or file count
+            max-size: "10m" # file size
