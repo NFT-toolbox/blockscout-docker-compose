@@ -19,8 +19,10 @@ services:
         tty: true
         network_mode: host
         environment:
-            ETHEREUM_JSONRPC_HTTP_URL: http://127.0.0.1:8545
-            ETHEREUM_JSONRPC_TRACE_URL: http://127.0.0.1:8545
+#            ETHEREUM_JSONRPC_HTTP_URL: http://127.0.0.1:8545
+#            ETHEREUM_JSONRPC_TRACE_URL: http://127.0.0.1:8545
+            ETHEREUM_JSONRPC_HTTP_URL: https://evm.iotabot.strangled.net
+            ETHEREUM_JSONRPC_TRACE_URL: https://evm.iotabot.strangled.net
             ETHEREUM_JSONRPC_VARIANT: geth
             NETWORK: IOTA
             SUBNETWORK: IOTA
