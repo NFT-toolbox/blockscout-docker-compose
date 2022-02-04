@@ -1,2 +1,0 @@
-A config for running a local ganache testnet instance on linux.
-Currently does not work, i assume that ganache does not bind it's services on the docker virtual network interface. It would be better anyway just to bridge the local port required from localhost to docker instead of the whole network interface.

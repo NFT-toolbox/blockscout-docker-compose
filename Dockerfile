@@ -1,6 +1,17 @@
-FROM bitwalker/alpine-elixir-phoenix:1.11.4
+FROM bitwalker/alpine-elixir-phoenix:1.12
 
 RUN apk --no-cache --update add alpine-sdk gmp-dev automake libtool inotify-tools autoconf python3 file
+
+ENV GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc
+ENV GLIBC_VERSION=2.30-r0
+
+RUN set -ex && \
+    apk --update add libstdc++ curl ca-certificates && \
+    for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION}; \
+        do curl -sSL ${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/${pkg}.apk -o /tmp/${pkg}.apk; done && \
+    apk add --allow-untrusted /tmp/*.apk && \
+    rm -v /tmp/*.apk && \
+    /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib
 
 # Install NPM
 RUN \
@@ -14,7 +25,7 @@ RUN \
       curl \
       inotify-tools \
       nodejs \
-      nodejs-npm && \
+      npm && \
     npm install npm -g --no-progress && \
     update-ca-certificates --fresh && \
     rm -rf /var/cache/apk/*
