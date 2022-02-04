@@ -24,13 +24,15 @@ services:
             ETHEREUM_JSONRPC_HTTP_URL: https://evm.iotabot.strangled.net
             ETHEREUM_JSONRPC_TRACE_URL: https://evm.iotabot.strangled.net
             ETHEREUM_JSONRPC_VARIANT: geth
-            NETWORK: IOTA
-            SUBNETWORK: IOTA
+            NETWORK: DEVNET-IOTA-EVM
+            SUBNETWORK: WASP-EVM-1076
             COIN: MIOTA
             CHAIN_ID: 1076
             HOST: 127.17.0.1
             PORT: 4001
             DATABASE_URL: postgresql://postgres:@127.17.0.1:5432/explorer?ssl=false
+            LINK_TO_OTHER_EXPLORERS: 'false'
+            SUPPORTED_CHAINS: '[ { "title": "IOTA Mainnet", "url": "https://explorer.iota.org/mainnet" }, { "title": "WASP-IF-EVM-1074", "url": "https://explorer.wasp.sc.iota.org/", "test_net?": true}]'
         logging:
           driver: "json-file"
           options:
